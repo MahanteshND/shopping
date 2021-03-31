@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Alco</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% uri =  current_user.present? ? [destroy_user_session_path, 'Logout', 'data-method=delete'] : [new_user_session_path, 'Login'] %>
+          <li><a href="<%= uri[0] %>" <%= uri[2]%>  ><span class="glyphicon glyphicon-log-in"></span> <%= uri[1] %></a></li>
+        </ul>
+      </div>
+    </nav>
+    <% flash.each do |type, msg| %>
+      <% color = type =='success' ? '#00ad5f;' : '#f44336;'  %>
+      <div class="alert" style="background-color: <%= color %>">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong> <%= msg %></strong>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

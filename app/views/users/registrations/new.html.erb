@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>SignUp</h2>
+  <%= form_for(resource,  as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
+    <div class="form-group">
+      <%= f.label :first_name, class: "control-label col-sm-2" %>
+      <div class="col-sm-6">
+        <%= f.text_field :first_name, class: "form-control", placeholder: "Enter first name" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name, class: "control-label col-sm-2" %>
+      <div class="col-sm-6">
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Enter last name" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, class: "control-label col-sm-2" %>
+      <div class="col-sm-6">
+        <%= f.text_field :email, class: "form-control", placeholder: "Enter email" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, class: "control-label col-sm-2" %>
+      <div class="col-sm-6">
+        <%= f.password_field :password, class: "form-control", placeholder: "Enter password" %>
+      </div>
+    </div>
+    <div class="form-check">
+      <%= f.check_box :admin_role %>
+      <%= f.label :admin_role, 'Admin?', class: "control-label col-sm-2" %>
+   </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<%= render "users/shared/links" %>
